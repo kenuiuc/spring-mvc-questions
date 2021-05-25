@@ -40,7 +40,7 @@ public class CustomizedFormHttpMsgConverter extends FormHttpMessageConverter {
                     String value = URLDecoder.decode(pair.substring(idx + 1), charset.name());
                     result.add(name, value);
                 } catch (Throwable th) {
-                    log.warn("URL decode failed", th);
+                    System.out.println("HI KEN I GOT HERE!");
                     throw new HttpMessageNotReadableException(th.getMessage());
                 }
             }
