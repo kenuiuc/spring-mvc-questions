@@ -1,6 +1,7 @@
 package com.ken.demo;
 
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -11,11 +12,6 @@ public class UtilTest {
     public void parseUri() {
         String nullStr = null;
         String emptyStr = "";
-//        try {
-//            URI nullUri = new URI(nullStr);
-//        } catch (URISyntaxException e) {
-//            e.printStackTrace();
-//        }
         try {
             URI emptyUri = new URI(emptyStr);
         } catch (URISyntaxException e) {
