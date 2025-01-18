@@ -11,7 +11,7 @@ curl --request PUT \
   --data name=ken%
 ```
 
-### As you can see the data `name=ken%` is in illegal url format so I get 500 response and the server side error log:
+### As you can see the data `name=ken%` is in illegal url format so I get `500` response and the server side error log:
 
 ```
 {
@@ -59,7 +59,7 @@ java.lang.IllegalArgumentException: URLDecoder: Incomplete trailing escape (%) p
 
 <br>
 
-### My goal is to let it return 400 status instead of 500, since this error is actually the client's fault not my server's fault
+### My goal is to let it return `400` status instead of `500`, since this error is actually the client's fault not my server's fault
 ### So I extended the `org.springframework.http.converter.FormHttpMessageConverter` and overrided the `read()` method
 
 <br>
@@ -111,7 +111,7 @@ public class CoreConfig {
 ```
 
 
-### Now I can see my converter is successfully registered through my debug endpoint (/myConfig):
+### Now I can see my converter is successfully registered through my debug endpoint `/myConfig`:
 
 ```
 {
@@ -142,7 +142,7 @@ public class CoreConfig {
 
 <br>
 
-### However, it looks like the CustomizedFormHttpMsgConverter is never used because the illegal request will still result in the same error:
+### However, it looks like the `CustomizedFormHttpMsgConverter` is never used because the illegal request will still result in the same error:
 
 <br>
 
@@ -159,6 +159,6 @@ java.lang.IllegalArgumentException: URLDecoder: Incomplete trailing escape (%) p
 <br>
 
 ## My questions are:
-### 1. Why my registered CustomizedFormHttpMsgConverter never get used?
+### 1. Why my registered `CustomizedFormHttpMsgConverter` never get used?
 ### 2. Is my approach (to extend FormHttpMessageConverter) the right way of doing things? 
-### Again my goal is just to change the 500 response to 400 upon URL decoding failures
+### Again my goal is just to change the `500` response to `400` upon URL decoding failures
